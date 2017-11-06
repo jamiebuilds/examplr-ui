@@ -22,6 +22,13 @@ const ControlsIcon = styled.div`
   padding-right: 1rem;
 `;
 
+const ControlsTitle = styled.h1`
+  font-size: inherit;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-right: 1rem;
+`;
+
 const BackgroundTile = styled.button`
   padding: 0;
   width: 2rem;
@@ -45,7 +52,8 @@ type Props = {
 export default function Controls(props: Props) {
   return (
     <ControlsContainer>
-      <ControlsIcon>{"⚡️"}</ControlsIcon>
+      <ControlsIcon>{"🌈"}</ControlsIcon>
+      <ControlsTitle>Examplr</ControlsTitle>
       <ExampleSelector
         placeholder="Select Example"
         items={props.examples}
@@ -55,7 +63,7 @@ export default function Controls(props: Props) {
       {props.backgrounds.map(background => (
         <BackgroundTile
           key={background.label}
-          backgroundCss={background.css}
+          backgroundCss={background.wrapper}
           active={background === props.selectedBackground}
           onClick={() => props.onBackgroundSelected(background)}/>
       ))}

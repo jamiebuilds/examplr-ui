@@ -33,25 +33,30 @@ const darkCheckered = css`
 
 export type BackgroundItem = {
   label: string,
-  css: Function,
+  wrapper: Function,
+  container: Function,
 };
 
 const backgrounds: Array<BackgroundItem> = [
   {
     label: 'White',
-    css: white,
+    wrapper: white,
+    container: lightCheckered,
   },
   {
     label: 'Light Checkered',
-    css: lightCheckered,
+    wrapper: lightCheckered,
+    container: lightCheckered,
   },
   {
     label: 'Dark Checkered',
-    css: darkCheckered,
+    wrapper: darkCheckered,
+    container: darkCheckered,
   },
   {
     label: 'Black',
-    css: black,
+    wrapper: black,
+    container: darkCheckered,
   },
 ];
 
