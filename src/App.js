@@ -36,6 +36,8 @@ type Props = {
 type State = {
   examples: Array<string>,
   selectedExample: string | null,
+  devices: Array<string>,
+  selectedDevice: string | null,
   selectedBackground: BackgroundItem,
 };
 
@@ -49,12 +51,31 @@ class App extends Component<Props, State> {
       'Five'
     ],
     selectedExample: null,
+    devices: [
+      'iPhone 5 portrait',
+      'iPhone 5 landscape',
+      'iPhone 6 portrait',
+      'iPhone 6 landscape',
+      'iPhone 6S portrait',
+      'iPhone 6S landscape',
+      'Android (Nexus 4) portrait',
+      'Android (Nexus 4) landscape',
+      'iPad portrait',
+      'iPad landscape',
+    ],
+    selectedDevice: null,
     selectedBackground: backgrouds[0],
   };
 
   handleExampleSelected = (selectedExample: string | null) => {
     this.setState({
       selectedExample,
+    });
+  };
+
+  handleDeviceSelected = (selectedDevice: string | null) => {
+    this.setState({
+      selectedDevice,
     });
   };
 
@@ -72,6 +93,9 @@ class App extends Component<Props, State> {
             examples={this.state.examples}
             selectedExample={this.state.selectedExample}
             onExampleSelected={this.handleExampleSelected}
+            devices={this.state.devices}
+            selectedDevice={this.state.selectedDevice}
+            onDeviceSelected={this.handleDeviceSelected}
             backgrounds={backgrouds}
             selectedBackground={this.state.selectedBackground}
             onBackgroundSelected={this.handleBackgroundSelected}/>

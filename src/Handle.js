@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const TopGrip = styled.div`
   position: absolute;
@@ -58,6 +58,7 @@ export default class Handle extends React.Component<Props> {
       case 'bottom': return <BottomGrip/>;
       case 'left': return <LeftGrip/>;
       case 'right': return <RightGrip/>;
+      default: throw new Error(`Invalid dir passed to handle: ${this.props.dir}`)
     }
   }
 }

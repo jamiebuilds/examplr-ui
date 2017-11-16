@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ExampleSelector from './ExampleSelector';
+import Select from './Select';
 import { type BackgroundItem } from './backgrounds';
 
 const ControlsContainer = styled.nav`
@@ -44,6 +45,9 @@ type Props = {
   examples: Array<string>,
   selectedExample: string | null,
   onExampleSelected: (selectedExample: string | null) => mixed,
+  devices: Array<string>,
+  selectedDevice: string | null,
+  onDeviceSelected: (selectedDevice: string | null) => mixed,
   backgrounds: Array<BackgroundItem>,
   selectedBackground: BackgroundItem,
   onBackgroundSelected: (selectedBackground: BackgroundItem) => mixed,
@@ -54,11 +58,16 @@ export default function Controls(props: Props) {
     <ControlsContainer>
       <ControlsIcon>{"🌈"}</ControlsIcon>
       <ControlsTitle>Examplr</ControlsTitle>
-      <ExampleSelector
+      <Select
         placeholder="Select Example"
         items={props.examples}
         selectedItem={props.selectedExample}
         onChange={props.onExampleSelected}/>
+      <Select
+        placeholder="Select Device"
+        items={props.devices}
+        selectedItem={props.selectedDevice}
+        onChange={props.onDeviceSelected}/>
 
       {props.backgrounds.map(background => (
         <BackgroundTile

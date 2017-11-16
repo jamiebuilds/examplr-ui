@@ -1,8 +1,40 @@
 // @flow
 import React from 'react';
 import Downshift from 'downshift';
-import { SelectContainer, SelectInput, SelectDropdown, SelectItem } from './selects';
+import styled from 'styled-components';
 
+const SelectContainer = styled.div`
+  position: relative;
+`;
+
+const SelectInput = styled.input`
+  font: inherit;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: white;
+  color: black;
+  margin-right: 0.5rem;
+`;
+
+const SelectDropdown = styled.div`
+  position: absolute;
+  min-width: 100%;
+  background: white;
+  color: black;
+  box-shadow:
+    0 0 1px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const SelectItem = styled.div`
+  padding: 0.5rem 1rem;
+  background: ${props => props.highlighted ? '#eee' : 'transparent'};
+  color: ${props => props.muted ? '#999' : 'inherit'};
+`;
+
+const SelectSeparator = styled.div`
+  border-top: 1px solid blue;
+`;
 
 function compare(a, b) {
   return a.toLowerCase().includes(b.toLowerCase());
@@ -24,16 +56,17 @@ function toMenuItems(items, inputValue) {
 }
 
 type Props = {
+  placeholder: string,
   items: Array<string>,
   selectedItem: string | null,
-  onChange: (selected: string | null, state: Object) => mixed,
+  onChange: (selected: string | null) => mixed,
 };
 
 type State = {
   isOpen: boolean,
 };
 
-export default class ExampleSelector extends React.Component<Props, State> {
+export default class Select extends React.Component<Props, State> {
   state = {
     isOpen: false,
   };
@@ -65,7 +98,6 @@ export default class ExampleSelector extends React.Component<Props, State> {
         isOpen={this.state.isOpen}
         onOuterClick={this.handleOuterClick}>
         {state => {
-          console.log
           let menuItems = toMenuItems(this.props.items, state.inputValue);
 
           return (

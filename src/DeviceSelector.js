@@ -1,12 +1,7 @@
 // @flow
 import React from 'react';
 import Downshift from 'downshift';
-import { SelectContainer, SelectInput, SelectDropdown, SelectItem } from './selects';
-
-
-function compare(a, b) {
-  return a.toLowerCase().includes(b.toLowerCase());
-}
+import { SelectContainer, SelectInput, SelectDropdown, SelectItem, compare } from './selects';
 
 function toMenuItems(items, inputValue) {
   let matched = [];
@@ -65,7 +60,6 @@ export default class ExampleSelector extends React.Component<Props, State> {
         isOpen={this.state.isOpen}
         onOuterClick={this.handleOuterClick}>
         {state => {
-          console.log
           let menuItems = toMenuItems(this.props.items, state.inputValue);
 
           return (
